@@ -46,6 +46,17 @@ module.exports = {
   },
 
   /**
+   * Associate commits with the release. This should be called before finalizing.
+   *
+   * @param {string} release Unique name of the release.
+   * @returns {Promise} A promise that resolves when the commits have been associated.
+   * @memberof SentryReleases
+   */
+  setCommits(release) {
+    return helper.execute(['releases', 'set-commits', '--auto', release]);
+  },
+
+  /**
    * Creates a unique, deterministic version identifier based on the project type and
    * source files. This identifier can be used as release name.
    *
